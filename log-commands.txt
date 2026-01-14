@@ -1,7 +1,11 @@
 # Version control with git: managing merge conflicts.
 #
+# Guidnace on what the steps do at 
 # https://swcarpentry.github.io/git-novice/09-conflict.html
 #
+# The (freshly created 2026-01-14) repository is at 
+# https://github.com/wltrimbl/recipes.git
+# 
 cd ~/Downloads
 # copy 
 git clone https://github.com/wltrimbl/recipes.git 
