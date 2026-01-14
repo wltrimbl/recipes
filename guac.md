@@ -1,2 +1,6 @@
 # Guacamole
-Um... something goes here.
+## Ingredients
+* avocado
+* lime
+* salt
+## Instructions
