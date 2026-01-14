@@ -1,0 +1,111 @@
+# Version control with git: managing merge conflicts.
+#
+# https://swcarpentry.github.io/git-novice/09-conflict.html
+#
+cd ~/Downloads
+# copy 
+git clone https://github.com/wltrimbl/recipes.git 
+ls -ld recipes
+git remote -v
+cd recipes
+git remote -v
+ls
+touch THISISATEST
+nano
+ls -ltr
+rm THISISATEST
+git add TEST
+git status
+git commit -m "Added test file"
+git status
+git push origin main 
+git remote -v
+# Configure git to talk to another remote git server:
+git remote add partner https://github.com/depressionmonkey/recipes.git
+git remote -v
+# and I could synchronize with
+git push partner main 
+git pull partner main
+nano hummus.md
+git status
+git add hummus.md
+git status
+git commit -m "Added hummus ingredients"
+git log --oneline
+git push origin main
+# This creates a new branch and checks it out:
+git checkout -b collaborator
+# Now we'll add some content to the collaborator branch
+nano guac.md 
+git status
+git add guac.md
+git commit -m "Added ingredients for guac"
+ls  # Three files here
+git checkout main 
+git checkout collaborator
+ls # Only two files here
+git checkout main
+# Add some content to main branch:
+nano guac.md
+git branch
+git status 
+git add guac.md
+git commit -m "Added crummy guac"
+cat guac.md
+git checkout collaborator
+cat guac.md
+git checkout main
+git branch
+# This command provokes a merge conflict
+git merge collaborator   
+# which we can fix by 
+git status 
+# 1) editing the files with the conflict markers
+nano guac.md
+git add guac.md
+git status
+# and 2)  git add / git committing the results
+git commit -m "Resolved two different versions of guac.md"
+git checkout collaborator
+ls -l
+touch fetabread.md
+touch bakedziti.md
+git add fetabread.md
+git add bakedziti.md
+git status
+git commit -m "Added two aspirational recipe files"
+ls
+git checkout main
+# Now let's add a baked potato on main...
+ls 
+git add bakedpotato.md
+touch bakedpotato.md
+git add bakedpotato.md
+git commit -m "This seems like a low-effort recipe"
+ls 
+git checkout collaborator
+ls
+git checkout main
+ls
+git branch
+# This merge succeeds with no human involvement
+git merge collaborator 
+ls
+git status 
+git push 
+# Oh, no!  The remote has a change that we don't have locally...
+git fetch
+git log
+git log --oneline
+git push 
+git branch
+git fetch origin main 
+# This combines the remote history with the local one and 
+# permits history to move forward.
+git merge origin/main
+git push 
+git branch
+# This shares the local collaborator branch with github:
+git checkout collaborator
+git push origin collaborator 
+
